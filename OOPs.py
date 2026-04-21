@@ -31,3 +31,15 @@ laptop2.Price = "90000/-"
 
 print(laptop1.brands,laptop1.RAM,laptop1.Price)
 print(laptop2.brands,laptop2.RAM,laptop2.Price)
+
+class Students:
+    def __init__(self,mark1,mark2,mark3):
+        self.mark1 = mark1
+        self.mark2 = mark2
+        self.mark3 = mark3
+
+    def average(self):
+        print((self.mark1+self.mark2+self.mark3)/3)
+    
+s1 = Students(102,34,56)
+s1.average()
