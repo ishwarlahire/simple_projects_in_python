@@ -43,3 +43,15 @@ class Students:
     
 s1 = Students(102,34,56)
 s1.average()
+
+
+class Quastion:
+    @staticmethod
+    def numcheck(num):
+        if num %2==0:
+            print("even")
+        else:
+            print("odd")
+
+obj2 = Quastion()
+obj2.numcheck(50)
