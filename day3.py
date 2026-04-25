@@ -57,35 +57,112 @@ print(count)
 #     print("enter correct age make sure age is number")
 
 # Open a file safely. If file not found show message.
-
+try:
+    file = open("data1.txt","r")
+except FileNotFoundError:
+    print("file not found ")
+except FileExistsError:
+    print("file olredy exist in memory")
 
 # Create calculator using try-except.
+while True:
+    try:
+        num1 = int(input("Enter first Number"))
+        num2 = int(input("enter second number"))
+        opp = input("what you want? \n addition press 1 \n subtraction press 2 \n multiplication press 3 \n division press 4 \n exit from calculator press 5 \n")
 
-# Q5
-
-# Use finally block to print "Program Ended".
+        if opp == "1":
+            print(num1 + num2)
+        elif opp == "2":
+            print(num1 - num2 )
+        elif opp == "3":
+            print(num1*num2)
+        elif opp == "4":
+            print(num1 / num2)
+        elif opp == "5":
+            break
+        else:
+            pass
+    except ZeroDivisionError:
+        print("number is not divide by zero")
+    except ValueError:
+        print("enter only numbers")
+    except TypeError:
+        print("enter correct number")
+    except Exception:
+        print("something is wrong")
+    # Use finally block to print "Program Ended".
+    finally:
+        print("Operation complated")
 
 # 3. Decorators (5 Questions)
-# Q1
-
 # Create decorator that prints "Before function call".
+def decorate(fetch):
+    def wrapper():
+        print("Before function call")
+        fetch()
+        print("After function call")
+    return wrapper
+@decorate
+def hello():
+    print("Hello Function")
 
-# Q2
+hello()
+
+
 
 # Create decorator for login check.
+is_login= True
+def login_requred(func):
+    def wrap():
+        if is_login:
+            print("account has been login successfully")
+            func()
+        else:
+            print("login is requred...!")
+    return wrap
 
-# Q3
+@login_requred
+def dashboard():
+    print("Welcome to Dashboard")
+
+dashboard()
 
 # Create decorator to calculate execution time.
+import time
+def calculate(func):
+    def wrap():
+        start = time.time()
+        func()
+        end = time.time()
+        print("total exicution time is ", end - start)
+    return wrap
 
-# Q4
+@calculate
+def programs():
+    for i in range(10011111):
+        pass
+
+programs()
 
 # Create decorator that logs function name.
+def logger(func):
+    def wrap():
+        print("function name is ", func.__name__)
+        func()
+    return wrap
+@logger
+def act():
+    print("main function")
 
-# Q5
+act()
 
 # Create decorator that allows only admin user.
 
+def validation(func):
+    def wrap():
+        if func.username.lower() == "admin":
+            print("admin login succsessfully")
 # 4. Generators (5 Questions)
 # Q1
 
@@ -208,3 +285,20 @@ print(count)
 # 2 Lambda/Map/Filter
 # 1 Generator
 # 1 Decorator
+
+
+x = int(input("x"))
+y = int(input("y"))
+z = int(input("z"))
+n = int(input("n"))
+list1 = [[i,j,k] for i in range(x+1) for j in range(y+1) for k in range(z+1) if i+j+k != n]
+print(list1)
+
+def match():
+    num1 = int(input("enter num1"))
+    num2 = int(input("enter num2"))
+    num3 = int(input("enter num3"))
+    end  = int(input("enter end"))
+
+    list2 = [[i,j,k] for i in range(num1+1) for j in range(num2+1) for k in range(num3 +1) if i+j+k != end]
+    print(list2)
